@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "flask-dev": "FLASK_DEBUG=1 pip3 install -r requirements.txt && python3 src/python/app.py",
+    "next-dev": "next dev",
+    "dev": "concurrently \"npm run next-dev\" \"npm run flask-dev\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "concurrently": "^8.2.1",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "next": "13.4.19",
