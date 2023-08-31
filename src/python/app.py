@@ -42,6 +42,24 @@ def scatterplot():
 
     return render_template('visualization.html', visualization=fig_html)
 
+@app.route('/choro-recovered')
+def choro_recovered():
+    
+    fig = px.choropleth(df,locations='Country',locationmode='country names',color='Recovered',animation_frame='Date')
+    fig.update_layout(title='Choropleth Map of Recovered Cases ',template="plotly_dark")
+    fig_html = fig.to_html(full_html=False)
+
+    return render_template('visualization.html', visualization=fig_html)
+
+@app.route('/scatter-recovered')
+def scatter_recovered():
+    
+    fig = px.scatter_geo(df,locations='Country',locationmode='country names',color='Recovered',size='Recovered',hover_name="Country",animation_frame='Date',title='Recovery over Time')
+    fig.update(layout_coloraxis_showscale=False,layout_template="plotly_dark")
+    fig_html = fig.to_html(full_html=False)
+
+    return render_template('visualization.html', visualization=fig_html)
+
 if __name__ == '__main__':
     app.run(debug=True)
 

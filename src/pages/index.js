@@ -15,16 +15,26 @@ const HomePage = () => {
         value={selectedVisualization}
         onChange={handleVisualizationChange}
       >
-        <option value="europe-timeline">
-          Choropleth Map of Confirmed Cases in Europe{" "}
-        </option>
-        <option value="world-timeline">
-          Choropleth Map of Confirmed Cases in the World
-        </option>
-        <option value="asia-timeline">
-          Choropleth Map of Confirmed Cases in Asia
-        </option>
-        <option value="scatterplot">Scatterplot of Confirmed Cases</option>
+        <optgroup label="- Confirmed Cases">
+          <option value="europe-timeline">
+            Choropleth Map of Confirmed Cases in Europe{" "}
+          </option>
+          <option value="world-timeline">
+            Choropleth Map of Confirmed Cases in the World
+          </option>
+          <option value="asia-timeline">
+            Choropleth Map of Confirmed Cases in Asia
+          </option>
+          <option value="scatterplot">Scatterplot of Confirmed Cases</option>
+        </optgroup>
+        <optgroup label="- Recovered Cases">
+          <option value="choro-recovered">
+            Choropleth Map of Recovered Cases
+          </option>
+          <option value="scatter-recovered">
+            Scatterplot of Recovered Cases
+          </option>
+        </optgroup>
       </select>
 
       <iframe
