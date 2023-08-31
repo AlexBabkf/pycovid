@@ -10,7 +10,7 @@ df = pd.read_csv('https://raw.githubusercontent.com/datasets/covid-19/master/dat
 def europe_timeline():
     
     fig = px.choropleth(df, locations='Country', locationmode='country names', color='Confirmed', animation_frame='Date', scope='europe')
-    fig.update_layout(title='Map of confirmed until today', template='plotly_dark')
+    fig.update_layout(title='Choropleth Map of Confirmed Cases - Europe', template='plotly_dark')
     fig_html = fig.to_html(full_html=False)
 
     return render_template('visualization.html', visualization=fig_html)
@@ -19,7 +19,25 @@ def europe_timeline():
 def world_timeline():
     
     fig = px.choropleth(df,locations='Country',locationmode='country names',color='Confirmed',animation_frame='Date')
-    fig.update_layout(title='Choropleth Map of Confirmed Cases -till today',template="plotly_dark")
+    fig.update_layout(title='Choropleth Map of Confirmed Cases - World',template="plotly_dark")
+    fig_html = fig.to_html(full_html=False)
+
+    return render_template('visualization.html', visualization=fig_html)
+
+@app.route('/asia-timeline')
+def asia_timeline():
+    
+    fig = px.choropleth(df,locations='Country',locationmode='country names',color='Confirmed',animation_frame='Date',scope='asia')
+    fig.update_layout(title='Choropleth Map of Confirmed Cases - Asia',template="plotly_dark")
+    fig_html = fig.to_html(full_html=False)
+
+    return render_template('visualization.html', visualization=fig_html)
+
+@app.route('/scatterplot')
+def scatterplot():
+    
+    fig = px.scatter_geo(df,locations='Country',locationmode='country names',color='Confirmed',size='Confirmed',hover_name="Country",animation_frame='Date',title='Spread over Time')
+    fig.update(layout_coloraxis_showscale=False,layout_template="plotly_dark")
     fig_html = fig.to_html(full_html=False)
 
     return render_template('visualization.html', visualization=fig_html)

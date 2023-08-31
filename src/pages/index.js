@@ -21,7 +21,12 @@ const HomePage = () => {
         <option value="world-timeline">
           Choropleth Map of Confirmed Cases in the World
         </option>
+        <option value="asia-timeline">
+          Choropleth Map of Confirmed Cases in Asia
+        </option>
+        <option value="scatterplot">Scatterplot of Confirmed Cases</option>
       </select>
+
       <iframe
         src={`http://127.0.0.1:5000/${selectedVisualization}`}
         style={{ width: "100%", height: "500px", border: "none" }}
