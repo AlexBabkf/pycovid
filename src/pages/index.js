@@ -7,7 +7,6 @@ const HomePage = () => {
   const handleVisualizationChange = (event) => {
     setSelectedVisualization(event.target.value);
   };
-
   return (
     <>
       <h1>COVID-19 Visualizations</h1>
@@ -38,7 +37,7 @@ const HomePage = () => {
       </select>
 
       <iframe
-        src={`http://127.0.0.1:5000/${selectedVisualization}`}
+        src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/${selectedVisualization}`}
         style={{ width: "100%", height: "500px", border: "none" }}
         title={selectedVisualization}
       ></iframe>
